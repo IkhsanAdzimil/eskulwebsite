@@ -1,0 +1,155 @@
+/* Palet Warna: Coklat Muda/Beige (latar belakang) dan Coklat Tua (teks/kotak) */
+:root {
+    --bg-color: #f8e5c5; /* Beige/Krem */
+    --text-color: #3e2723; /* Coklat Tua */
+    --box-color: #a17c66; /* Coklat Sedang untuk Kotak Wisata */
+    --font-heading: 'IM Fell English SC', serif;
+    --font-body: 'Georgia', serif;
+}
+
+/* Reset dan Pengaturan Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Batasi lebar agar tidak terlalu lebar di layar besar */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    font-size: 4em; /* Ukuran besar untuk 'Yogyakarta' */
+    font-weight: normal;
+}
+
+.header-text {
+    font-family: var(--font-body);
+    font-size: 1.5em;
+    font-weight: bold;
+    /* Memberi jarak yang sama agar posisi 'Sejarah' dan 'Destinasi wisata' sesuai */
+    width: 30%; 
+}
+
+/* Main Content Layout */
+main {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Kolom sidebar dan galeri */
+    gap: 20px;
+}
+
+/* Sidebar (Kotak Wisata) */
+.sidebar {
+    background-color: var(--box-color);
+    color: white; /* Kontras teks */
+    padding: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2); /* Menambah sedikit kedalaman */
+}
+
+.sidebar h2 {
+    font-family: var(--font-body);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.sidebar ul li {
+    font-size: 1.2em;
+    padding: 5px 0;
+    /* Membuat bullet point custom dengan titik tebal */
+    position: relative;
+    padding-left: 20px; 
+}
+
+.sidebar ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    font-size: 1.5em; 
+    line-height: 1;
+}
+
+/* Galeri Gambar */
+.image-gallery {
+    display: grid;
+    /* Mengatur 3 kolom untuk gambar */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+    align-items: start;
+}
+
+.image-item {
+    overflow: hidden;
+    /* Memastikan gambar memenuhi ruang dan mempertahankan rasio */
+    height: 100%; 
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar menutupi area item tanpa terdistorsi */
+    display: block;
+}
+
+/* Footer (by: Neil) */
+footer {
+    text-align: left;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Media Queries untuk Responsif (Opsional, tapi disarankan) */
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr; /* Tumpuk sidebar dan galeri */
+    }
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom gambar pada tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+    .header-text {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+    header h1 {
+        font-size: 3em;
+    }
+    .image-gallery {
+        grid-template-columns: 1fr; /* 1 kolom gambar pada ponsel */
+    }
+}
